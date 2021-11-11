@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:935495206929:android:44faccfc452c747eb749b0",
+        "mobilesdk_app_id": "1:935495206929:android:b6e5a76ed93ed5d7b749b0",
         "android_client_info": {
           "package_name": "com.flutterflow.auth21"
         }
