@@ -17,12 +17,12 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
-  TextEditingController confirmPasswordTextController;
-  bool passwordVisibility2;
-  TextEditingController emailTextController;
   TextEditingController fullNameController;
-  TextEditingController passwordTextController;
-  bool passwordVisibility1;
+  TextEditingController textemailController;
+  TextEditingController passwordController;
+  bool passwordVisibility;
+  TextEditingController passwordToController;
+  bool passwordToVisibility;
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -30,12 +30,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   @override
   void initState() {
     super.initState();
-    confirmPasswordTextController = TextEditingController();
-    passwordVisibility2 = false;
-    emailTextController = TextEditingController();
     fullNameController = TextEditingController();
-    passwordTextController = TextEditingController();
-    passwordVisibility1 = false;
+    textemailController = TextEditingController();
+    passwordController = TextEditingController();
+    passwordVisibility = false;
+    passwordToController = TextEditingController();
+    passwordToVisibility = false;
   }
 
   @override
@@ -109,7 +109,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                             child: TextFormField(
-                              controller: emailTextController,
+                              controller: textemailController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Email Address',
@@ -141,8 +141,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                             child: TextFormField(
-                              controller: passwordTextController,
-                              obscureText: !passwordVisibility1,
+                              controller: passwordController,
+                              obscureText: !passwordVisibility,
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: FlutterFlowTheme.bodyText1,
@@ -166,11 +166,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 fillColor: FlutterFlowTheme.secondaryColor,
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
-                                    () => passwordVisibility1 =
-                                        !passwordVisibility1,
+                                    () => passwordVisibility =
+                                        !passwordVisibility,
                                   ),
                                   child: Icon(
-                                    passwordVisibility1
+                                    passwordVisibility
                                         ? Icons.visibility_outlined
                                         : Icons.visibility_off_outlined,
                                     color: Color(0x80FFFFFF),
@@ -185,8 +185,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                             child: TextFormField(
-                              controller: confirmPasswordTextController,
-                              obscureText: !passwordVisibility2,
+                              controller: passwordToController,
+                              obscureText: !passwordToVisibility,
                               decoration: InputDecoration(
                                 labelText: 'Confirm Password',
                                 labelStyle: FlutterFlowTheme.bodyText1,
@@ -210,11 +210,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 fillColor: FlutterFlowTheme.secondaryColor,
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
-                                    () => passwordVisibility2 =
-                                        !passwordVisibility2,
+                                    () => passwordToVisibility =
+                                        !passwordToVisibility,
                                   ),
                                   child: Icon(
-                                    passwordVisibility2
+                                    passwordToVisibility
                                         ? Icons.visibility_outlined
                                         : Icons.visibility_off_outlined,
                                     color: Color(0x80FFFFFF),
@@ -232,8 +232,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               onPressed: () async {
                                 setState(() => _loadingButton1 = true);
                                 try {
-                                  if (passwordTextController.text !=
-                                      confirmPasswordTextController.text) {
+                                  if (passwordController.text !=
+                                      passwordToController.text) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -246,8 +246,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
                                   final user = await createAccountWithEmail(
                                     context,
-                                    emailTextController.text,
-                                    passwordTextController.text,
+                                    textemailController.text,
+                                    passwordController.text,
                                   );
                                   if (user == null) {
                                     return;
@@ -255,6 +255,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
                                   final usersCreateData = createUsersRecordData(
                                     displayName: fullNameController.text,
+                                    password: passwordController.text,
+                                    fullName: fullNameController.text,
+                                    email: textemailController.text,
                                   );
                                   await UsersRecord.collection
                                       .doc(user.uid)

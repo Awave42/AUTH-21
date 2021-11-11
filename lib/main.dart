@@ -6,7 +6,7 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:auth_21/splash_screen/splash_screen_widget.dart';
+import 'package:auth_21/register/register_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'my_tasks/my_tasks_widget.dart';
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser.loggedIn
               ? NavBarPage()
-              : SplashScreenWidget(),
+              : RegisterWidget(),
     );
   }
 }
