@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -263,13 +262,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       .doc(user.uid)
                                       .update(usersCreateData);
 
-                                  await Navigator.pushAndRemoveUntil(
+                                  await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          NavBarPage(initialPage: 'myTasks'),
+                                      builder: (context) => LoginWidget(),
                                     ),
-                                    (r) => false,
                                   );
                                 } finally {
                                   setState(() => _loadingButton1 = false);
