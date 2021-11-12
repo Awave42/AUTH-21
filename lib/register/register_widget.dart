@@ -101,7 +101,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               fillColor: FlutterFlowTheme.secondaryColor,
                             ),
                             style: FlutterFlowTheme.bodyText1,
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.name,
                           ),
                           Padding(
                             padding:

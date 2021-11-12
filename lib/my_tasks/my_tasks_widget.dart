@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../create_task_page/create_task_page_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -22,9 +23,9 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.primaryColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text(
-          'My Tasks',
+          'Пользователи',
           style: FlutterFlowTheme.title1,
         ),
         actions: [],
@@ -95,34 +96,69 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.primaryBlack,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
+              child: StreamBuilder<List<PotUgpuGp022021Record>>(
+                stream: queryPotUgpuGp022021Record(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: SpinKitRing(
+                          color: FlutterFlowTheme.primaryColor,
+                          size: 50,
+                        ),
+                      ),
+                    );
+                  }
+                  List<PotUgpuGp022021Record>
+                      listViewPotUgpuGp022021RecordList = snapshot.data;
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewPotUgpuGp022021RecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewPotUgpuGp022021Record =
+                          listViewPotUgpuGp022021RecordList[listViewIndex];
+                      return Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.primaryBlack,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: StreamBuilder<PotUgpuGp022021Record>(
+                              stream: PotUgpuGp022021Record.getDocument(
+                                  listViewPotUgpuGp022021Record.reference),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: SpinKitRing(
+                                        color: FlutterFlowTheme.primaryColor,
+                                        size: 50,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                final rowPotUgpuGp022021Record = snapshot.data;
+                                return InkWell(
+                                  onTap: () async {
+                                    await launchURL(
+                                        rowPotUgpuGp022021Record.urlPdf);
+                                  },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -139,22 +175,10 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Task Name',
-                                                style: FlutterFlowTheme.title2,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 4, 0, 0),
-                                                child: Text(
-                                                  'Todo Date',
-                                                  style: FlutterFlowTheme
-                                                      .bodyText2
-                                                      .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: FlutterFlowTheme
-                                                        .primaryColor,
-                                                  ),
-                                                ),
+                                                listViewPotUgpuGp022021Record
+                                                    .namePdf,
+                                                style:
+                                                    FlutterFlowTheme.subtitle1,
                                               )
                                             ],
                                           ),
@@ -164,19 +188,30 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        children: [],
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 10, 0),
+                                            child: Icon(
+                                              Icons.double_arrow_outlined,
+                                              color: Colors.white,
+                                              size: 24,
+                                            ),
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),
-                                ),
-                              ),
-                            )
-                          ],
+                                );
+                              },
+                            ),
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
+                      );
+                    },
+                  );
+                },
               ),
             )
           ],
