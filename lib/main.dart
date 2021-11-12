@@ -6,9 +6,10 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:auth_21/splash_screen/splash_screen_widget.dart';
+import 'package:auth_21/register/register_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'login/login_widget.dart';
 import 'my_tasks/my_tasks_widget.dart';
 import 'completed_tasks/completed_tasks_widget.dart';
 import 'my_profile/my_profile_widget.dart';
@@ -70,7 +71,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser.loggedIn
               ? NavBarPage()
-              : SplashScreenWidget(),
+              : RegisterWidget(),
     );
   }
 }
@@ -86,7 +87,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'myTasks';
+  String _currentPage = 'Login';
 
   @override
   void initState() {
@@ -97,6 +98,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
+      'Login': LoginWidget(),
       'myTasks': MyTasksWidget(),
       'CompletedTasks': CompletedTasksWidget(),
       'MyProfile': MyProfileWidget(),
@@ -105,6 +107,14 @@ class _NavBarPageState extends State<NavBarPage> {
       body: tabs[_currentPage],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            label: 'Home',
+            tooltip: '',
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.playlist_add,

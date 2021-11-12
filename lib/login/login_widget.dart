@@ -194,13 +194,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       return;
                                     }
 
-                                    await Navigator.pushAndRemoveUntil(
+                                    await Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
                                             NavBarPage(initialPage: 'myTasks'),
                                       ),
-                                      (r) => false,
                                     );
                                   } finally {
                                     setState(() => _loadingButton1 = false);

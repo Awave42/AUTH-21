@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>935495206929-81pdfedrqmduo5tadbl6erbnk9pvluq6.apps.googleusercontent.com</string>
+	<string>246093790567-pjfu99drpjn55jmit11adb6h3g28sbbk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.935495206929-81pdfedrqmduo5tadbl6erbnk9pvluq6</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>935495206929-3fj44gvgubmifg792tm9fbioqgqgfp94.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.246093790567-pjfu99drpjn55jmit11adb6h3g28sbbk</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCc4EkePbeKRQLF1tR-GkxgTCUU-2jyzWI</string>
+	<string>AIzaSyBNivoGLOl_x-mHfWlNDaVsEYyUZV6qMeg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>935495206929</string>
+	<string>246093790567</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.flutterflow.auth21</string>
 	<key>PROJECT_ID</key>
-	<string>health-and-safety-102</string>
+	<string>auth-21-63dbb</string>
 	<key>STORAGE_BUCKET</key>
-	<string>health-and-safety-102.appspot.com</string>
+	<string>auth-21-63dbb.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:935495206929:ios:a41dee4cd9db24d1b749b0</string>
-	<key>DATABASE_URL</key>
-	<string>https://health-and-safety-102-default-rtdb.firebaseio.com</string>
+	<string>1:246093790567:ios:2c1664356eade02db303c2</string>
 </dict>
 </plist>

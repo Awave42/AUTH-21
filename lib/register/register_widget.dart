@@ -1,9 +1,8 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../login/login_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -252,20 +251,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     return;
                                   }
 
-                                  final usersCreateData = createUsersRecordData(
-                                    displayName: fullNameController.text,
-                                    password: passwordController.text,
-                                    fullName: fullNameController.text,
-                                    email: textemailController.text,
-                                  );
-                                  await UsersRecord.collection
-                                      .doc(user.uid)
-                                      .update(usersCreateData);
-
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LoginWidget(),
+                                      builder: (context) =>
+                                          NavBarPage(initialPage: 'myTasks'),
                                     ),
                                   );
                                 } finally {
@@ -324,7 +314,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                 Duration(milliseconds: 200),
                                             reverseDuration:
                                                 Duration(milliseconds: 200),
-                                            child: LoginWidget(),
+                                            child: NavBarPage(
+                                                initialPage: 'Login'),
                                           ),
                                         );
                                       } finally {
