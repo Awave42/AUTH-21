@@ -3,6 +3,7 @@ import '../create_task_page/create_task_page_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../webview/webview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +26,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
         backgroundColor: FlutterFlowTheme.primaryColor,
         automaticallyImplyLeading: true,
         title: Text(
-          'Пользователи',
+          'Инструкции',
           style: FlutterFlowTheme.title1,
         ),
         actions: [],
@@ -83,21 +84,12 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                 )
               ],
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    'Scheduled Tasks',
-                    style: FlutterFlowTheme.bodyText2,
-                  )
-                ],
-              ),
-            ),
             Expanded(
               child: StreamBuilder<List<PotUgpuGp022021Record>>(
-                stream: queryPotUgpuGp022021Record(),
+                stream: queryPotUgpuGp022021Record(
+                  queryBuilder: (potUgpuGp022021Record) =>
+                      potUgpuGp022021Record.orderBy('creat_add'),
+                ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -122,7 +114,7 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                       final listViewPotUgpuGp022021Record =
                           listViewPotUgpuGp022021RecordList[listViewIndex];
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 8),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 3,
@@ -136,75 +128,61 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                               color: FlutterFlowTheme.primaryBlack,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: StreamBuilder<PotUgpuGp022021Record>(
-                              stream: PotUgpuGp022021Record.getDocument(
-                                  listViewPotUgpuGp022021Record.reference),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: SpinKitRing(
-                                        color: FlutterFlowTheme.primaryColor,
-                                        size: 50,
-                                      ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => WebviewWidget(),
                                     ),
                                   );
-                                }
-                                final rowPotUgpuGp022021Record = snapshot.data;
-                                return InkWell(
-                                  onTap: () async {
-                                    await launchURL(
-                                        rowPotUgpuGp022021Record.urlPdf);
-                                  },
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16, 0, 0, 0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                listViewPotUgpuGp022021Record
-                                                    .namePdf,
-                                                style:
-                                                    FlutterFlowTheme.subtitle1,
-                                              )
-                                            ],
-                                          ),
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 0, 0, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              listViewPotUgpuGp022021Record
+                                                  .namePdf,
+                                              style: FlutterFlowTheme.subtitle1,
+                                            )
+                                          ],
                                         ),
                                       ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 10, 0),
-                                            child: Icon(
-                                              Icons.double_arrow_outlined,
-                                              color: Colors.white,
-                                              size: 24,
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 10, 0),
+                                          child: Icon(
+                                            Icons.double_arrow_outlined,
+                                            color: Colors.white,
+                                            size: 24,
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
