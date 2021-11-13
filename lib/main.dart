@@ -6,13 +6,10 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:auth_21/register/register_widget.dart';
+import 'package:auth_21/start_sceen/start_sceen_widget.dart';
+import 'package:auth_21/choosing_profession/choosing_profession_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'login/login_widget.dart';
-import 'my_tasks/my_tasks_widget.dart';
-import 'completed_tasks/completed_tasks_widget.dart';
-import 'my_profile/my_profile_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,97 +67,8 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser.loggedIn
-              ? NavBarPage()
-              : RegisterWidget(),
-    );
-  }
-}
-
-class NavBarPage extends StatefulWidget {
-  NavBarPage({Key key, this.initialPage}) : super(key: key);
-
-  final String initialPage;
-
-  @override
-  _NavBarPageState createState() => _NavBarPageState();
-}
-
-/// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'Login';
-
-  @override
-  void initState() {
-    super.initState();
-    _currentPage = widget.initialPage ?? _currentPage;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tabs = {
-      'Login': LoginWidget(),
-      'myTasks': MyTasksWidget(),
-      'CompletedTasks': CompletedTasksWidget(),
-      'MyProfile': MyProfileWidget(),
-    };
-    return Scaffold(
-      body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.playlist_add,
-              size: 32,
-            ),
-            activeIcon: Icon(
-              Icons.playlist_add,
-              size: 32,
-            ),
-            label: 'My Tasks',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.alarm_on,
-              size: 32,
-            ),
-            activeIcon: Icon(
-              Icons.alarm_on,
-              size: 32,
-            ),
-            label: 'Completed',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline,
-              size: 32,
-            ),
-            activeIcon: Icon(
-              Icons.person_sharp,
-              size: 32,
-            ),
-            label: 'Home',
-            tooltip: '',
-          )
-        ],
-        backgroundColor: FlutterFlowTheme.primaryBlack,
-        currentIndex: tabs.keys.toList().indexOf(_currentPage),
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: FlutterFlowTheme.tertiaryColor,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-      ),
+              ? ChoosingProfessionWidget()
+              : StartSceenWidget(),
     );
   }
 }

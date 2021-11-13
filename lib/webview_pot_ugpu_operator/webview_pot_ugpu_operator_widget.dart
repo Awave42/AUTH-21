@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class WebviewWidget extends StatefulWidget {
-  WebviewWidget({
+class WebviewPotUgpuOperatorWidget extends StatefulWidget {
+  WebviewPotUgpuOperatorWidget({
     Key key,
     this.urlpdf,
   }) : super(key: key);
@@ -16,10 +16,12 @@ class WebviewWidget extends StatefulWidget {
   final DocumentReference urlpdf;
 
   @override
-  _WebviewWidgetState createState() => _WebviewWidgetState();
+  _WebviewPotUgpuOperatorWidgetState createState() =>
+      _WebviewPotUgpuOperatorWidgetState();
 }
 
-class _WebviewWidgetState extends State<WebviewWidget> {
+class _WebviewPotUgpuOperatorWidgetState
+    extends State<WebviewPotUgpuOperatorWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -40,14 +42,14 @@ class _WebviewWidgetState extends State<WebviewWidget> {
             ),
           );
         }
-        final webviewPotUgpuGp022021Record = snapshot.data;
+        final webviewPotUgpuOperatorPotUgpuGp022021Record = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
             backgroundColor: FlutterFlowTheme.primaryColor,
             automaticallyImplyLeading: true,
             title: Text(
-              webviewPotUgpuGp022021Record.namePdf,
+              webviewPotUgpuOperatorPotUgpuGp022021Record.namePdf,
               style: FlutterFlowTheme.bodyText1,
             ),
             actions: [],
@@ -56,31 +58,11 @@ class _WebviewWidgetState extends State<WebviewWidget> {
           ),
           backgroundColor: Colors.white,
           body: SafeArea(
-            child: StreamBuilder<List<PotUgpuGp022021Record>>(
-              stream: queryPotUgpuGp022021Record(),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: SpinKitRing(
-                        color: FlutterFlowTheme.primaryColor,
-                        size: 50,
-                      ),
-                    ),
-                  );
-                }
-                List<PotUgpuGp022021Record> webViewPotUgpuGp022021RecordList =
-                    snapshot.data;
-                return FlutterFlowWebView(
-                  url: webviewPotUgpuGp022021Record.urlPdf.length,
-                  bypass: false,
-                  verticalScroll: false,
-                  horizontalScroll: false,
-                );
-              },
+            child: FlutterFlowWebView(
+              url: webviewPotUgpuOperatorPotUgpuGp022021Record.urlPdf,
+              bypass: false,
+              verticalScroll: false,
+              horizontalScroll: false,
             ),
           ),
         );

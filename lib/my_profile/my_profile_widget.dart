@@ -5,7 +5,7 @@ import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../splash_screen/splash_screen_widget.dart';
+import '../start_sceen/start_sceen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -234,7 +234,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget> {
                                         duration: Duration(milliseconds: 250),
                                         reverseDuration:
                                             Duration(milliseconds: 250),
-                                        child: SplashScreenWidget(),
+                                        child: StartSceenWidget(),
                                       ),
                                     );
                                     await signOut();

@@ -3,19 +3,20 @@ import '../create_task_page/create_task_page_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../webview/webview_widget.dart';
+import '../webview_pot_ugpu_operator/webview_pot_ugpu_operator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MyTasksWidget extends StatefulWidget {
-  MyTasksWidget({Key key}) : super(key: key);
+class PotUgpuGp9OperatorWidget extends StatefulWidget {
+  PotUgpuGp9OperatorWidget({Key key}) : super(key: key);
 
   @override
-  _MyTasksWidgetState createState() => _MyTasksWidgetState();
+  _PotUgpuGp9OperatorWidgetState createState() =>
+      _PotUgpuGp9OperatorWidgetState();
 }
 
-class _MyTasksWidgetState extends State<MyTasksWidget> {
+class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -115,31 +116,35 @@ class _MyTasksWidgetState extends State<MyTasksWidget> {
                           listViewPotUgpuGp022021RecordList[listViewIndex];
                       return Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 8),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 3,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.primaryBlack,
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    WebviewPotUgpuOperatorWidget(
+                                  urlpdf:
+                                      listViewPotUgpuGp022021Record.reference,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Material(
+                            color: Colors.transparent,
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                              child: InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => WebviewWidget(),
-                                    ),
-                                  );
-                                },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.primaryBlack,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [

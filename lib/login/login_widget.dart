@@ -2,8 +2,7 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
-import '../register/register_widget.dart';
+import '../pot_ugpu_gp9_operator/pot_ugpu_gp9_operator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,8 +18,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
-  bool _loadingButton1 = false;
-  bool _loadingButton2 = false;
+  bool _loadingButton = false;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -180,7 +178,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  setState(() => _loadingButton1 = true);
+                                  setState(() => _loadingButton = true);
                                   try {
                                     if (!formKey.currentState.validate()) {
                                       return;
@@ -198,11 +196,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            NavBarPage(initialPage: 'myTasks'),
+                                            PotUgpuGp9OperatorWidget(),
                                       ),
                                     );
                                   } finally {
-                                    setState(() => _loadingButton1 = false);
+                                    setState(() => _loadingButton = false);
                                   }
                                 },
                                 text: 'Login',
@@ -223,7 +221,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                   borderRadius: 8,
                                 ),
-                                loading: _loadingButton1,
+                                loading: _loadingButton,
                               ),
                             ),
                             Expanded(
@@ -234,59 +232,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 6),
-                                      child: Text(
-                                        'Don’t have an account yet? ',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: FlutterFlowTheme.darkBG,
-                                        ),
-                                      ),
-                                    ),
-                                    FFButtonWidget(
-                                      onPressed: () async {
-                                        setState(() => _loadingButton2 = true);
-                                        try {
-                                          await Navigator.push(
-                                            context,
-                                            PageTransition(
-                                              type: PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 200),
-                                              reverseDuration:
-                                                  Duration(milliseconds: 200),
-                                              child: RegisterWidget(),
-                                            ),
-                                          );
-                                        } finally {
-                                          setState(
-                                              () => _loadingButton2 = false);
-                                        }
-                                      },
-                                      text: 'Register',
-                                      options: FFButtonOptions(
-                                        width: 100,
-                                        height: 32,
-                                        color: FlutterFlowTheme.primaryColor,
-                                        textStyle:
-                                            FlutterFlowTheme.subtitle2.override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Colors.white,
-                                        ),
-                                        elevation: 0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1,
-                                        ),
-                                        borderRadius: 0,
-                                      ),
-                                      loading: _loadingButton2,
-                                    )
-                                  ],
+                                  children: [],
                                 ),
                               ),
                             )

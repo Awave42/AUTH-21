@@ -21,7 +21,7 @@ abstract class PotUgpuGp022021Record
 
   @nullable
   @BuiltValueField(wireName: 'url_pdf')
-  BuiltList<String> get urlPdf;
+  String get urlPdf;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -30,7 +30,7 @@ abstract class PotUgpuGp022021Record
   static void _initializeBuilder(PotUgpuGp022021RecordBuilder builder) =>
       builder
         ..namePdf = ''
-        ..urlPdf = ListBuilder();
+        ..urlPdf = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('POT-UGPU-GP-02-2021');
@@ -53,10 +53,11 @@ abstract class PotUgpuGp022021Record
 Map<String, dynamic> createPotUgpuGp022021RecordData({
   String namePdf,
   DateTime creatAdd,
+  String urlPdf,
 }) =>
     serializers.toFirestore(
         PotUgpuGp022021Record.serializer,
         PotUgpuGp022021Record((p) => p
           ..namePdf = namePdf
           ..creatAdd = creatAdd
-          ..urlPdf = null));
+          ..urlPdf = urlPdf));

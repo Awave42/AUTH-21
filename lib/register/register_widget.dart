@@ -2,7 +2,8 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import '../login/login_widget.dart';
+import '../pot_ugpu_gp9_operator/pot_ugpu_gp9_operator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -255,7 +256,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          NavBarPage(initialPage: 'myTasks'),
+                                          PotUgpuGp9OperatorWidget(),
                                     ),
                                   );
                                 } finally {
@@ -314,8 +315,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                 Duration(milliseconds: 200),
                                             reverseDuration:
                                                 Duration(milliseconds: 200),
-                                            child: NavBarPage(
-                                                initialPage: 'Login'),
+                                            child: LoginWidget(),
                                           ),
                                         );
                                       } finally {
