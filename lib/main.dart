@@ -6,8 +6,8 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:heath_and_safety/start_to/start_to_widget.dart';
-import 'package:heath_and_safety/start_toto/start_toto_widget.dart';
+import 'package:health_and_safety/start_to/start_to_widget.dart';
+import 'package:health_and_safety/start_toto/start_toto_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() async {
@@ -23,14 +23,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Stream<HeathAndSafetyFirebaseUser> userStream;
-  HeathAndSafetyFirebaseUser initialUser;
+  Stream<HealthAndSafetyFirebaseUser> userStream;
+  HealthAndSafetyFirebaseUser initialUser;
   final authUserSub = authenticatedUserStream.listen((_) {});
 
   @override
   void initState() {
     super.initState();
-    userStream = heathAndSafetyFirebaseUserStream()
+    userStream = healthAndSafetyFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
   }
 
@@ -44,7 +44,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Heath and Safety',
+      title: 'Health and Safety',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

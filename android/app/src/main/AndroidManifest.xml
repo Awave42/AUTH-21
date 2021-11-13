@@ -4,7 +4,7 @@
    <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="heath_and_safety"
+        android:label="health_and_safety"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

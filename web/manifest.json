@@ -1,6 +1,6 @@
 {
-    "name": "heath_and_safety",
-    "short_name": "heath_and_safety",
+    "name": "health_and_safety",
+    "short_name": "health_and_safety",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-# heath_and_safety
+# health_and_safety
 
 A new Flutter project.
 
