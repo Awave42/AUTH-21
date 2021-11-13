@@ -46,15 +46,16 @@ class _StartSceenWidgetState extends State<StartSceenWidget> {
               Expanded(
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Охрана труда',
-                      style: FlutterFlowTheme.title1.override(
+                      style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF42BEA5),
-                        fontWeight: FontWeight.w900,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
                       ),
                     )
                   ],

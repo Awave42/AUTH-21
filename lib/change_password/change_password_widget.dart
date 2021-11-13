@@ -44,7 +44,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 width: 50,
                 height: 50,
                 child: SpinKitRing(
-                  color: FlutterFlowTheme.primaryColor,
+                  color: Color(0xFF000E44),
                   size: 50,
                 ),
               ),

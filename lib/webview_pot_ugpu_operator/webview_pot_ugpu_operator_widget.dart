@@ -11,9 +11,11 @@ class WebviewPotUgpuOperatorWidget extends StatefulWidget {
   WebviewPotUgpuOperatorWidget({
     Key key,
     this.urlpdf,
+    this.urlpdfppi,
   }) : super(key: key);
 
   final DocumentReference urlpdf;
+  final DocumentReference urlpdfppi;
 
   @override
   _WebviewPotUgpuOperatorWidgetState createState() =>
@@ -36,7 +38,7 @@ class _WebviewPotUgpuOperatorWidgetState
               width: 50,
               height: 50,
               child: SpinKitRing(
-                color: FlutterFlowTheme.primaryColor,
+                color: Color(0xFF000E44),
                 size: 50,
               ),
             ),
@@ -46,7 +48,7 @@ class _WebviewPotUgpuOperatorWidgetState
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.primaryColor,
+            backgroundColor: Color(0xFF1E388E),
             automaticallyImplyLeading: true,
             title: Text(
               webviewPotUgpuOperatorPotUgpuGp022021Record.namePdf,

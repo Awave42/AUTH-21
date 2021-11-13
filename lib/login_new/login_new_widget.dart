@@ -1,24 +1,26 @@
 import '../auth/auth_util.dart';
-import '../choosing_profession/choosing_profession_widget.dart';
+import '../choosing_profession_admin/choosing_profession_admin_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../start_to/start_to_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginWidget extends StatefulWidget {
-  LoginWidget({Key key}) : super(key: key);
+class LoginNewWidget extends StatefulWidget {
+  LoginNewWidget({Key key}) : super(key: key);
 
   @override
-  _LoginWidgetState createState() => _LoginWidgetState();
+  _LoginNewWidgetState createState() => _LoginNewWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _LoginNewWidgetState extends State<LoginNewWidget> {
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
-  bool _loadingButton = false;
+  bool _loadingButton1 = false;
+  bool _loadingButton2 = false;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -37,23 +39,34 @@ class _LoginWidgetState extends State<LoginWidget> {
       autovalidateMode: AutovalidateMode.always,
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.primaryColor,
+        backgroundColor: Color(0xFF3DADDF),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.primaryColor,
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: Image.asset(
-                        'assets/images/topSection@2x.png',
-                      ).image,
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width,
+                      maxHeight: MediaQuery.of(context).size.height * 1,
+                    ),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: Image.asset(
+                          'assets/images/__(42_x_42_cm)_(1).png',
+                        ).image,
+                      ),
+                      gradient: LinearGradient(
+                        colors: [Color(0xFF000E44), Color(0xFF3DADDF)],
+                        stops: [0, 1],
+                        begin: AlignmentDirectional(0, -1),
+                        end: AlignmentDirectional(0, 1),
+                      ),
                     ),
                   ),
                 )
@@ -85,23 +98,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.secondaryColor,
+                                    color: Color(0xFF1A81AF),
                                     width: 1,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.secondaryColor,
+                                    color: Color(0xFF1A81AF),
                                     width: 1,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 filled: true,
-                                fillColor: FlutterFlowTheme.secondaryColor,
+                                fillColor: Color(0xFF1A81AF),
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
-                                  color: FlutterFlowTheme.primaryColor,
+                                  color: Color(0xFF1E388E),
                                 ),
                               ),
                               style: FlutterFlowTheme.bodyText1,
@@ -131,23 +144,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.secondaryColor,
+                                      color: Color(0xFF1A81AF),
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.secondaryColor,
+                                      color: Color(0xFF1A81AF),
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   filled: true,
-                                  fillColor: FlutterFlowTheme.secondaryColor,
+                                  fillColor: Color(0xFF258DBB),
                                   prefixIcon: Icon(
                                     Icons.lock_outline,
-                                    color: FlutterFlowTheme.primaryColor,
+                                    color: Color(0xFF1E388E),
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
@@ -178,7 +191,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  setState(() => _loadingButton = true);
+                                  setState(() => _loadingButton1 = true);
                                   try {
                                     if (!formKey.currentState.validate()) {
                                       return;
@@ -196,18 +209,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            ChoosingProfessionWidget(),
+                                            ChoosingProfessionAdminWidget(),
                                       ),
                                     );
                                   } finally {
-                                    setState(() => _loadingButton = false);
+                                    setState(() => _loadingButton1 = false);
                                   }
                                 },
                                 text: 'Login',
                                 options: FFButtonOptions(
                                   width: 200,
                                   height: 50,
-                                  color: FlutterFlowTheme.darkBG,
+                                  color: Color(0xFF000E44),
                                   textStyle:
                                       FlutterFlowTheme.subtitle2.override(
                                     fontFamily: 'Lexend Deca',
@@ -221,19 +234,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                   borderRadius: 8,
                                 ),
-                                loading: _loadingButton,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 8, 0, 30),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [],
-                                ),
+                                loading: _loadingButton1,
                               ),
                             )
                           ],
@@ -243,6 +244,47 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ],
                 ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      setState(() => _loadingButton2 = true);
+                      try {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => StartToWidget(),
+                          ),
+                        );
+                      } finally {
+                        setState(() => _loadingButton2 = false);
+                      }
+                    },
+                    text: 'Главная',
+                    options: FFButtonOptions(
+                      width: 200,
+                      height: 30,
+                      color: Color(0x00FFFFFF),
+                      textStyle: FlutterFlowTheme.bodyText2.override(
+                        fontFamily: 'Lexend Deca',
+                        color: FlutterFlowTheme.white,
+                      ),
+                      elevation: 3,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 8,
+                    ),
+                    loading: _loadingButton2,
+                  ),
+                )
+              ],
             )
           ],
         ),

@@ -6,9 +6,8 @@ import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:auth_21/start_sceen/start_sceen_widget.dart';
-import 'package:auth_21/choosing_profession/choosing_profession_widget.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
+import 'package:heath_and_safety/start_to/start_to_widget.dart';
+import 'package:heath_and_safety/start_toto/start_toto_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() async {
@@ -24,14 +23,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Stream<Auth21FirebaseUser> userStream;
-  Auth21FirebaseUser initialUser;
+  Stream<HeathAndSafetyFirebaseUser> userStream;
+  HeathAndSafetyFirebaseUser initialUser;
   final authUserSub = authenticatedUserStream.listen((_) {});
 
   @override
   void initState() {
     super.initState();
-    userStream = auth21FirebaseUserStream()
+    userStream = heathAndSafetyFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
   }
 
@@ -45,7 +44,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AUTH-21',
+      title: 'Heath and Safety',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -56,19 +55,16 @@ class _MyAppState extends State<MyApp> {
       home: initialUser == null
           ? Container(
               color: Colors.transparent,
-              child: Center(
-                child: Builder(
-                  builder: (context) => Image.asset(
-                    'assets/images/todo_0.0_Splash@3x.png',
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    fit: BoxFit.fitWidth,
-                  ),
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/__(1).gif',
+                  fit: BoxFit.cover,
                 ),
               ),
             )
           : currentUser.loggedIn
-              ? ChoosingProfessionWidget()
-              : StartSceenWidget(),
+              ? StartTotoWidget()
+              : StartToWidget(),
     );
   }
 }

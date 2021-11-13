@@ -1,4 +1,6 @@
 import '../backend/backend.dart';
+import '../create_pdfspisok_pot_admin/create_pdfspisok_pot_admin_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../webview_pot_ugpu_operator/webview_pot_ugpu_operator_widget.dart';
@@ -7,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PotUgpuGp9OperatorWidget extends StatefulWidget {
-  PotUgpuGp9OperatorWidget({
+class PotUgpuGp9OperatorAdminWidget extends StatefulWidget {
+  PotUgpuGp9OperatorAdminWidget({
     Key key,
     this.urlpdf,
     this.pluspdf,
@@ -18,11 +20,12 @@ class PotUgpuGp9OperatorWidget extends StatefulWidget {
   final DocumentReference pluspdf;
 
   @override
-  _PotUgpuGp9OperatorWidgetState createState() =>
-      _PotUgpuGp9OperatorWidgetState();
+  _PotUgpuGp9OperatorAdminWidgetState createState() =>
+      _PotUgpuGp9OperatorAdminWidgetState();
 }
 
-class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
+class _PotUgpuGp9OperatorAdminWidgetState
+    extends State<PotUgpuGp9OperatorAdminWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -41,6 +44,34 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.darkBG,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('FloatingActionButton pressed ...');
+        },
+        backgroundColor: Color(0xFF1E388E),
+        elevation: 8,
+        child: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          buttonSize: 48,
+          icon: Icon(
+            Icons.add_rounded,
+            color: FlutterFlowTheme.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.bottomToTop,
+                duration: Duration(milliseconds: 270),
+                reverseDuration: Duration(milliseconds: 270),
+                child: CreatePdfspisokPotAdminWidget(),
+              ),
+            );
+          },
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -93,7 +124,7 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                       final listViewPotUgpuGp022021Record =
                           listViewPotUgpuGp022021RecordList[listViewIndex];
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 4),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 8),
                         child: InkWell(
                           onTap: () async {
                             await Navigator.push(
@@ -106,6 +137,10 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                                 ),
                               ),
                             );
+                          },
+                          onLongPress: () async {
+                            await listViewPotUgpuGp022021Record.reference
+                                .delete();
                           },
                           child: Material(
                             color: Colors.transparent,

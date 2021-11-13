@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/users_record.dart';
 import 'schema/to_do_list_record.dart';
 import 'schema/pot_ugpu_gp_02_2021_record.dart';
+import 'schema/ppi_ugpu_gp9_02_2021_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,7 @@ export 'schema/serializers.dart';
 export 'schema/users_record.dart';
 export 'schema/to_do_list_record.dart';
 export 'schema/pot_ugpu_gp_02_2021_record.dart';
+export 'schema/ppi_ugpu_gp9_02_2021_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -37,6 +39,14 @@ Stream<List<PotUgpuGp022021Record>> queryPotUgpuGp022021Record(
         bool singleRecord = false}) =>
     queryCollection(
         PotUgpuGp022021Record.collection, PotUgpuGp022021Record.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<PpiUgpuGp9022021Record>> queryPpiUgpuGp9022021Record(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        PpiUgpuGp9022021Record.collection, PpiUgpuGp9022021Record.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

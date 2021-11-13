@@ -3,6 +3,7 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'users_record.dart';
 import 'to_do_list_record.dart';
 import 'pot_ugpu_gp_02_2021_record.dart';
+import 'ppi_ugpu_gp9_02_2021_record.dart';
 
 import 'index.dart';
 
@@ -16,6 +17,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   ToDoListRecord,
   PotUgpuGp022021Record,
+  PpiUgpuGp9022021Record,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

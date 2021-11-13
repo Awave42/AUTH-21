@@ -1,4 +1,6 @@
 import '../backend/backend.dart';
+import '../create_pdfspisok_ppi_admin/create_pdfspisok_ppi_admin_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../webview_pot_ugpu_operator/webview_pot_ugpu_operator_widget.dart';
@@ -7,22 +9,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PotUgpuGp9OperatorWidget extends StatefulWidget {
-  PotUgpuGp9OperatorWidget({
+class PpiUgpuGp9OperatorAdminWidget extends StatefulWidget {
+  PpiUgpuGp9OperatorAdminWidget({
     Key key,
-    this.urlpdf,
-    this.pluspdf,
+    this.pluspdfppi,
   }) : super(key: key);
 
-  final DocumentReference urlpdf;
-  final DocumentReference pluspdf;
+  final DocumentReference pluspdfppi;
 
   @override
-  _PotUgpuGp9OperatorWidgetState createState() =>
-      _PotUgpuGp9OperatorWidgetState();
+  _PpiUgpuGp9OperatorAdminWidgetState createState() =>
+      _PpiUgpuGp9OperatorAdminWidgetState();
 }
 
-class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
+class _PpiUgpuGp9OperatorAdminWidgetState
+    extends State<PpiUgpuGp9OperatorAdminWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -33,7 +34,7 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
         backgroundColor: Color(0xFF1E388E),
         automaticallyImplyLeading: true,
         title: Text(
-          'ПОТ-УГПУ-ГП9-02-2021',
+          'ППИ-УГПУ-ГП9-02-2021',
           style: FlutterFlowTheme.title3,
         ),
         actions: [],
@@ -41,6 +42,34 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.darkBG,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('FloatingActionButton pressed ...');
+        },
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        elevation: 8,
+        child: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          buttonSize: 48,
+          icon: Icon(
+            Icons.add_rounded,
+            color: FlutterFlowTheme.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.bottomToTop,
+                duration: Duration(milliseconds: 270),
+                reverseDuration: Duration(milliseconds: 270),
+                child: CreatePdfspisokPpiAdminWidget(),
+              ),
+            );
+          },
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -52,7 +81,7 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.05,
                   decoration: BoxDecoration(
-                    color: Color(0xFF1A1F24),
+                    color: FlutterFlowTheme.darkBG,
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: Image.asset(
@@ -64,10 +93,10 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
               ],
             ),
             Expanded(
-              child: StreamBuilder<List<PotUgpuGp022021Record>>(
-                stream: queryPotUgpuGp022021Record(
-                  queryBuilder: (potUgpuGp022021Record) =>
-                      potUgpuGp022021Record.orderBy('creat_add'),
+              child: StreamBuilder<List<PpiUgpuGp9022021Record>>(
+                stream: queryPpiUgpuGp9022021Record(
+                  queryBuilder: (ppiUgpuGp9022021Record) =>
+                      ppiUgpuGp9022021Record.orderBy('creat_add'),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -83,15 +112,15 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                       ),
                     );
                   }
-                  List<PotUgpuGp022021Record>
-                      listViewPotUgpuGp022021RecordList = snapshot.data;
+                  List<PpiUgpuGp9022021Record>
+                      listViewPpiUgpuGp9022021RecordList = snapshot.data;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewPotUgpuGp022021RecordList.length,
+                    itemCount: listViewPpiUgpuGp9022021RecordList.length,
                     itemBuilder: (context, listViewIndex) {
-                      final listViewPotUgpuGp022021Record =
-                          listViewPotUgpuGp022021RecordList[listViewIndex];
+                      final listViewPpiUgpuGp9022021Record =
+                          listViewPpiUgpuGp9022021RecordList[listViewIndex];
                       return Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 4),
                         child: InkWell(
@@ -101,11 +130,15 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                               MaterialPageRoute(
                                 builder: (context) =>
                                     WebviewPotUgpuOperatorWidget(
-                                  urlpdf:
-                                      listViewPotUgpuGp022021Record.reference,
+                                  urlpdfppi:
+                                      listViewPpiUgpuGp9022021Record.reference,
                                 ),
                               ),
                             );
+                          },
+                          onDoubleTap: () async {
+                            await listViewPpiUgpuGp9022021Record.reference
+                                .delete();
                           },
                           child: Material(
                             color: Colors.transparent,
@@ -138,7 +171,7 @@ class _PotUgpuGp9OperatorWidgetState extends State<PotUgpuGp9OperatorWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              listViewPotUgpuGp022021Record
+                                              listViewPpiUgpuGp9022021Record
                                                   .namePdf,
                                               style: FlutterFlowTheme.subtitle1,
                                             )

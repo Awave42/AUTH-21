@@ -1,8 +1,8 @@
-import '../choosing_profession/choosing_profession_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../pot_ugpu_gp9_operator/pot_ugpu_gp9_operator_widget.dart';
+import '../ppi_ugpu_gp9_operator/ppi_ugpu_gp9_operator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,13 +26,17 @@ class _ChoosingInstrukciyOperatorWidgetState
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
+        backgroundColor: Color(0xFF1E388E),
         automaticallyImplyLeading: true,
+        title: Text(
+          'Оператор по добыче нефти и газа',
+          style: FlutterFlowTheme.bodyText1,
+        ),
         actions: [],
         centerTitle: true,
         elevation: 4,
       ),
-      backgroundColor: Color(0xFF14181B),
+      backgroundColor: Color(0xFF1A1F24),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +72,7 @@ class _ChoosingInstrukciyOperatorWidgetState
                         color: Color(0xFF262D34),
                         textStyle: FlutterFlowTheme.subtitle1.override(
                           fontFamily: 'Lexend Deca',
-                          color: Color(0xFF39D2C0),
+                          color: FlutterFlowTheme.grayBG,
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
@@ -102,7 +106,7 @@ class _ChoosingInstrukciyOperatorWidgetState
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ChoosingProfessionWidget(),
+                              builder: (context) => PpiUgpuGp9OperatorWidget(),
                             ),
                           );
                         } finally {
@@ -116,7 +120,7 @@ class _ChoosingInstrukciyOperatorWidgetState
                         color: Color(0xFF262D34),
                         textStyle: FlutterFlowTheme.subtitle1.override(
                           fontFamily: 'Lexend Deca',
-                          color: Color(0xFF39D2C0),
+                          color: FlutterFlowTheme.grayBG,
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),

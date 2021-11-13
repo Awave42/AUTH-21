@@ -1,6 +1,4 @@
 import '../backend/backend.dart';
-import '../create_task_page/create_task_page_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../webview_pot_ugpu_operator/webview_pot_ugpu_operator_widget.dart';
@@ -24,45 +22,17 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
+        backgroundColor: Color(0xFF1E388E),
         automaticallyImplyLeading: true,
         title: Text(
-          'Инструкции',
-          style: FlutterFlowTheme.title1,
+          'ППИ-УГПУ-ГП9-02-2021',
+          style: FlutterFlowTheme.title3,
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.darkBG,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('FloatingActionButton pressed ...');
-        },
-        backgroundColor: FlutterFlowTheme.primaryColor,
-        elevation: 8,
-        child: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          buttonSize: 48,
-          icon: Icon(
-            Icons.add_rounded,
-            color: FlutterFlowTheme.white,
-            size: 30,
-          ),
-          onPressed: () async {
-            await Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.bottomToTop,
-                duration: Duration(milliseconds: 270),
-                reverseDuration: Duration(milliseconds: 270),
-                child: CreateTaskPageWidget(),
-              ),
-            );
-          },
-        ),
-      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -72,13 +42,13 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 53,
+                  height: MediaQuery.of(context).size.height * 0.05,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.darkBG,
                     image: DecorationImage(
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.fill,
                       image: Image.asset(
-                        'assets/images/waves@2x.png',
+                        'assets/images/__(42_x_42_cm)_(42_x_20_cm)_(375_x_150_px).png',
                       ).image,
                     ),
                   ),
@@ -86,10 +56,10 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
               ],
             ),
             Expanded(
-              child: StreamBuilder<List<PotUgpuGp022021Record>>(
-                stream: queryPotUgpuGp022021Record(
-                  queryBuilder: (potUgpuGp022021Record) =>
-                      potUgpuGp022021Record.orderBy('creat_add'),
+              child: StreamBuilder<List<PpiUgpuGp9022021Record>>(
+                stream: queryPpiUgpuGp9022021Record(
+                  queryBuilder: (ppiUgpuGp9022021Record) =>
+                      ppiUgpuGp9022021Record.orderBy('creat_add'),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -99,23 +69,23 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
                         width: 50,
                         height: 50,
                         child: SpinKitRing(
-                          color: FlutterFlowTheme.primaryColor,
+                          color: Color(0xFF000E44),
                           size: 50,
                         ),
                       ),
                     );
                   }
-                  List<PotUgpuGp022021Record>
-                      listViewPotUgpuGp022021RecordList = snapshot.data;
+                  List<PpiUgpuGp9022021Record>
+                      listViewPpiUgpuGp9022021RecordList = snapshot.data;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewPotUgpuGp022021RecordList.length,
+                    itemCount: listViewPpiUgpuGp9022021RecordList.length,
                     itemBuilder: (context, listViewIndex) {
-                      final listViewPotUgpuGp022021Record =
-                          listViewPotUgpuGp022021RecordList[listViewIndex];
+                      final listViewPpiUgpuGp9022021Record =
+                          listViewPpiUgpuGp9022021RecordList[listViewIndex];
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 8),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 4),
                         child: InkWell(
                           onTap: () async {
                             await Navigator.push(
@@ -123,8 +93,8 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
                               MaterialPageRoute(
                                 builder: (context) =>
                                     WebviewPotUgpuOperatorWidget(
-                                  urlpdf:
-                                      listViewPotUgpuGp022021Record.reference,
+                                  urlpdfppi:
+                                      listViewPpiUgpuGp9022021Record.reference,
                                 ),
                               ),
                             );
@@ -160,7 +130,7 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              listViewPotUgpuGp022021Record
+                                              listViewPpiUgpuGp9022021Record
                                                   .namePdf,
                                               style: FlutterFlowTheme.subtitle1,
                                             )
@@ -178,7 +148,7 @@ class _PpiUgpuGp9OperatorWidgetState extends State<PpiUgpuGp9OperatorWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 10, 0),
                                           child: Icon(
-                                            Icons.double_arrow_outlined,
+                                            Icons.keyboard_arrow_right,
                                             color: Colors.white,
                                             size: 24,
                                           ),

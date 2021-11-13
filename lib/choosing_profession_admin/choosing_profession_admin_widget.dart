@@ -1,4 +1,5 @@
-import '../choosing_instrukciy_operator/choosing_instrukciy_operator_widget.dart';
+import '../choosing_instrukciy_operator_admin/choosing_instrukciy_operator_admin_widget.dart';
+import '../choosing_profession/choosing_profession_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -6,15 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ChoosingProfessionWidget extends StatefulWidget {
-  ChoosingProfessionWidget({Key key}) : super(key: key);
+class ChoosingProfessionAdminWidget extends StatefulWidget {
+  ChoosingProfessionAdminWidget({Key key}) : super(key: key);
 
   @override
-  _ChoosingProfessionWidgetState createState() =>
-      _ChoosingProfessionWidgetState();
+  _ChoosingProfessionAdminWidgetState createState() =>
+      _ChoosingProfessionAdminWidgetState();
 }
 
-class _ChoosingProfessionWidgetState extends State<ChoosingProfessionWidget> {
+class _ChoosingProfessionAdminWidgetState
+    extends State<ChoosingProfessionAdminWidget> {
   bool _loadingButton1 = false;
   bool _loadingButton2 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,6 +41,31 @@ class _ChoosingProfessionWidgetState extends State<ChoosingProfessionWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Режим редактора',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Color(0xFF1A81AF),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
             child: Row(
@@ -55,9 +82,11 @@ class _ChoosingProfessionWidgetState extends State<ChoosingProfessionWidget> {
                         try {
                           await Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ChoosingInstrukciyOperatorWidget(),
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 300),
+                              reverseDuration: Duration(milliseconds: 300),
+                              child: ChoosingInstrukciyOperatorAdminWidget(),
                             ),
                           );
                         } finally {

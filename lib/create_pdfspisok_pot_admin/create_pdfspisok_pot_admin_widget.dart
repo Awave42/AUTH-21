@@ -3,33 +3,42 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import '../pot_ugpu_gp9_operator/pot_ugpu_gp9_operator_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CreateTaskPageWidget extends StatefulWidget {
-  CreateTaskPageWidget({Key key}) : super(key: key);
+class CreatePdfspisokPotAdminWidget extends StatefulWidget {
+  CreatePdfspisokPotAdminWidget({
+    Key key,
+    this.pluspdf,
+  }) : super(key: key);
+
+  final DocumentReference pluspdf;
 
   @override
-  _CreateTaskPageWidgetState createState() => _CreateTaskPageWidgetState();
+  _CreatePdfspisokPotAdminWidgetState createState() =>
+      _CreatePdfspisokPotAdminWidgetState();
 }
 
-class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
-  DateTime datePicked;
-  TextEditingController textController1;
-  TextEditingController textController2;
-  bool _loadingButton1 = false;
+class _CreatePdfspisokPotAdminWidgetState
+    extends State<CreatePdfspisokPotAdminWidget> {
+  DateTime datePicked1;
+  DateTime datePicked2;
+  TextEditingController namePdfController;
+  TextEditingController urlPdfController;
+  PotUgpuGp022021Record newRecord;
   bool _loadingButton2 = false;
+  bool _loadingButton1 = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
+    namePdfController = TextEditingController();
+    urlPdfController = TextEditingController();
   }
 
   @override
@@ -48,7 +57,12 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
               children: [
                 InkWell(
                   onTap: () async {
-                    Navigator.pop(context);
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PotUgpuGp9OperatorWidget(),
+                      ),
+                    );
                   },
                   child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -114,25 +128,8 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Add Task',
+                                'Добавьте инструкцию',
                                 style: FlutterFlowTheme.title2,
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: AutoSizeText(
-                                  'Fill out the details below to add a new task.',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: FlutterFlowTheme.tertiaryColor,
-                                  ),
-                                ),
                               )
                             ],
                           ),
@@ -141,10 +138,10 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                           padding:
                               EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                           child: TextFormField(
-                            controller: textController1,
+                            controller: namePdfController,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Task Name',
+                              labelText: 'Название Инстркции',
                               labelStyle: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: FlutterFlowTheme.tertiaryColor,
@@ -178,15 +175,15 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                           padding:
                               EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                           child: TextFormField(
-                            controller: textController2,
+                            controller: urlPdfController,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Details',
+                              labelText: 'Ссылка на pdf',
                               labelStyle: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: FlutterFlowTheme.tertiaryColor,
                               ),
-                              hintText: 'Enter a description here...',
+                              hintText: 'Вставьте ссылку ...',
                               hintStyle: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: FlutterFlowTheme.tertiaryColor,
@@ -215,41 +212,72 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                         ),
                         Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
+                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                           child: InkWell(
                             onTap: () async {
                               await DatePicker.showDatePicker(
                                 context,
                                 showTitleActions: true,
                                 onConfirm: (date) {
-                                  setState(() => datePicked = date);
+                                  setState(() => datePicked1 = date);
                                 },
                                 currentTime: getCurrentTimestamp,
+                                minTime: getCurrentTimestamp,
                               );
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.92,
-                              height: 50,
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.05,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.darkBG,
+                                color: Color(0xFF1A1F24),
                                 borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.darkBG,
-                                  width: 1,
-                                ),
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 14, 0, 0),
-                                child: Text(
-                                  dateTimeFormat('MMMEd', datePicked),
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: FlutterFlowTheme.tertiaryColor,
+                                    10, 10, 0, 0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    await DatePicker.showDateTimePicker(
+                                      context,
+                                      showTitleActions: true,
+                                      onConfirm: (date) {
+                                        setState(() => datePicked2 = date);
+                                      },
+                                      currentTime: getCurrentTimestamp,
+                                      minTime: getCurrentTimestamp,
+                                    );
+                                  },
+                                  child: Text(
+                                    dateTimeFormat(
+                                        'MMMEd', getCurrentTimestamp),
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF95A1AC),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                                child: Text(
+                                  'Поля Даты выше обязательно*',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: FlutterFlowTheme.grayBG,
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         Padding(
@@ -268,7 +296,7 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                                     setState(() => _loadingButton1 = false);
                                   }
                                 },
-                                text: 'Cancel',
+                                text: 'Отменить',
                                 options: FFButtonOptions(
                                   width: 130,
                                   height: 50,
@@ -290,21 +318,28 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
                                 onPressed: () async {
                                   setState(() => _loadingButton2 = true);
                                   try {
-                                    final toDoListCreateData =
-                                        createToDoListRecordData(
-                                      toDoName: textController1.text,
-                                      toDoDescription: textController2.text,
-                                      toDoDate: datePicked,
+                                    final potUgpuGp022021CreateData =
+                                        createPotUgpuGp022021RecordData(
+                                      namePdf: namePdfController.text,
+                                      urlPdf: urlPdfController.text,
+                                      creatAdd: datePicked2,
                                     );
-                                    await ToDoListRecord.collection
-                                        .doc()
-                                        .set(toDoListCreateData);
+                                    final potUgpuGp022021RecordReference =
+                                        PotUgpuGp022021Record.collection.doc();
+                                    await potUgpuGp022021RecordReference
+                                        .set(potUgpuGp022021CreateData);
+                                    newRecord = PotUgpuGp022021Record
+                                        .getDocumentFromData(
+                                            potUgpuGp022021CreateData,
+                                            potUgpuGp022021RecordReference);
                                     Navigator.pop(context);
+
+                                    setState(() {});
                                   } finally {
                                     setState(() => _loadingButton2 = false);
                                   }
                                 },
-                                text: 'Create Task',
+                                text: 'Добавить',
                                 options: FFButtonOptions(
                                   width: 130,
                                   height: 50,
